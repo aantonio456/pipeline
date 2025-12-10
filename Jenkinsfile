@@ -21,7 +21,7 @@ pipeline {
                         -Dsonar.projectKey=pipeline-vulnerable \
                         -Dsonar.sources=. \
                         -Dsonar.php.exclusions=vendor/** \
-                        -Dsonar.host.url=http://localhost:9000
+                        -Dsonar.host.url=http://192.168.0.21:9000
                     """
                 }
             }

@@ -4,7 +4,7 @@ $mensaje = isset($_GET['msg']) ? $_GET['msg'] : "Bienvenido";
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Web Vulnerable</title>
+    <title>Web de Prueba</title>
 </head>
 <body>
     <h1>Sitio Web Vulnerable</h1>

@@ -29,13 +29,17 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 10, unit: 'MINUTES') {
+                timeout(time: 15, unit: 'MINUTES') {
                     script {
+                        // Espera 15 segundos para que SonarQube procese el análisis
+                        echo "Waiting 15 seconds for SonarQube to finish processing..."
+                        sleep(time: 15, unit: 'SECONDS')
+
                         def qg = waitForQualityGate()
                         echo "Quality Gate status: ${qg.status}"
+
                         if (qg.status != 'OK') {
-                            echo "Quality Gate failed. Check issues in SonarQube."
-                            // No aborta la build para pruebas
+                            echo "Quality Gate failed. Revisa los problemas en SonarQube."
                         } else {
                             echo "Quality Gate passed!"
                         }
@@ -43,5 +47,6 @@ pipeline {
                 }
             }
         }
-    } // cierre de stages
-} // cierre de pipeline
+    }
+}
+

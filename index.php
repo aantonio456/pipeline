@@ -7,7 +7,7 @@ $mensaje = isset($_GET['msg']) ? $_GET['msg'] : "Bienvenido";
     <title>Web de Prueba</title>
 </head>
 <body>
-    <h1>Sitio Web Vulnerable</h1>
+    <h1>Sitio Web Prueba</h1>
 
     <p>Mensaje recibido: <?= $mensaje ?> </p>
 

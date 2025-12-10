@@ -26,5 +26,22 @@ pipeline {
                 }
             }
         }
+
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 10, unit: 'MINUTES') {
+                    script {
+                        def qg = waitForQualityGate()
+                        echo "Quality Gate status: ${qg.status}"
+                        if (qg.status != 'OK') {
+                            echo "Quality Gate failed. Check issues in SonarQube."
+                            // No aborta la build para pruebas
+                        } else {
+                            echo "Quality Gate passed!"
+                        }
+                    }
+                }
+            }
+        }
     } // cierre de stages
 } // cierre de pipeline
